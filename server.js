@@ -53,32 +53,7 @@ slapp
         .route('how-are-you', state)
     }
 // new code
-    slapp.message(/^(good morning|good afternoon|good evening)/i, ['direct_mention', 'direct_message'], (msg, text) => {
-    msg
-      .say(`${text}, how are you....?`)
-      // sends next event from user to this route, passing along state
-      .route('how', { greeting: text })
-  })
-  .route('how', (msg, state) => {
-    var text = (msg.body.event && msg.body.event.text) || ''
-
-    // user may not have typed text as their next action, ask again and re-route
-    if (!text) {
-      return msg
-        .say("Whoops, I'm still waiting to hear how you're doing.")
-        .say('How are you?')
-        .route('how', state)
-    }
-slapp.message(/^(good morning|good afternoon)/i, ['mention', 'direct_message'], (msg) => {
-  // You can provide a list of responses, and a random one will be chosen
-  // You can also include slack emoji in your responses
-  msg.say([
-    "You're welcome :smile:",
-    'You bet',
-    ':+1: Of course',
-    'Anytime :sun_with_face: :full_moon_with_face:'
-  ])
-})      
+        
   //2  // add their response to state
     state.status = text
 
