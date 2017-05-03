@@ -52,7 +52,24 @@ slapp
         .say('How are you?')
         .route('how-are-you', state)
     }
+// new code
+    slapp.message('^(good morning|good afternoon|good evening)$', ['direct_mention', 'direct_message'], (msg, text) => {
+    msg
+      .say(`${text}, how are you....?`)
+      // sends next event from user to this route, passing along state
+      .route('how-are-you', { greeting: text })
+  })
+  .route('how-are-you', (msg, state) => {
+    var text = (msg.body.event && msg.body.event.text) || ''
 
+    // user may not have typed text as their next action, ask again and re-route
+    if (!text) {
+      return msg
+        .say("Whoops, I'm still waiting to hear how you're doing.")
+        .say('How are you?')
+        .route('how-are-you', state)
+    }
+      
     // add their response to state
     state.status = text
 
