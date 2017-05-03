@@ -67,10 +67,10 @@ slapp
       return msg
         .say("Whoops, I'm still waiting to hear how you're doing.")
         .say('How are you?')
-        .route('how-are-you', state)
+        .route('how', state)
     }
       
-    // add their response to state
+  //2  // add their response to state
     state.status = text
 
     msg
