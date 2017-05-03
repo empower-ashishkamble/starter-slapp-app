@@ -53,7 +53,7 @@ slapp
         .route('how-are-you', state)
     }
 // new code
-    slapp.message('^(good morning|good afternoon|good evening)$', ['direct_mention', 'direct_message'], (msg, text) => {
+    slapp.message(/^(good morning|good afternoon|good evening)/i, ['direct_mention', 'direct_message'], (msg, text) => {
     msg
       .say(`${text}, how are you....?`)
       // sends next event from user to this route, passing along state
