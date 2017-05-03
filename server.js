@@ -38,7 +38,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 slapp
   .message('^(hi|hello|hey)$', ['direct_mention', 'direct_message'], (msg, text) => {
     msg
-      .say(`${text}, how are you?`)
+      .say(`${text}, how are you....?`)
       // sends next event from user to this route, passing along state
       .route('how-are-you', { greeting: text })
   })
