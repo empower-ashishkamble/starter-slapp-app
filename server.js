@@ -69,7 +69,16 @@ slapp
         .say('How are you?')
         .route('how', state)
     }
-      
+slapp.message(/^(good morning|good afternoon)/i, ['mention', 'direct_message'], (msg) => {
+  // You can provide a list of responses, and a random one will be chosen
+  // You can also include slack emoji in your responses
+  msg.say([
+    "You're welcome :smile:",
+    'You bet',
+    ':+1: Of course',
+    'Anytime :sun_with_face: :full_moon_with_face:'
+  ])
+})      
   //2  // add their response to state
     state.status = text
 
